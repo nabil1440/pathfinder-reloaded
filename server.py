@@ -37,6 +37,37 @@ def getOneProduct(id: int):
 
     return titans[id]
 
+# Write these routes:
+
+# POST /login
+# POST /login/manager
+# POST /login/employee
+
+# GET /profile
+# PATCH /profile
+
+# GET /profile/manager
+# PATCH /profile/manager
+
+# GET /profile/employee
+# PATCH /profile/employee
+
+# GET /employees
+# GET /employees/{id}
+# UPDATE /employees/{id}
+# DELETE /employees/{id}
+
+# POST /activities
+# GET /activities
+# GET /activities/{id}
+# PATCH /activities/{id}
+# DELETE /activities/{id}
+
+# GET /companies/{id}
+# PATCH /companies/{id}
+
+# =======================
+
 # HTTP status code
 # 2xx, 3xx, 4xx, 5xx
 # 2xx: Okay
