@@ -37,110 +37,116 @@ def getOneProduct(id: int):
 
     return titans[id]
 
-# Write these routes:
 
-# POST /login
+@app.post('/signup')
+def userSignup():
+    pass
+
+
+@app.post('/signup/company')
+def companySignup():
+    pass
+
+
 @app.post('/login')
 def getLogin():
     pass
 
-# POST /login/manager
+
 @app.post('/login/manager')
 def postLoginManger():
     pass
 
-# POST /login/employee
+
 @app.post('/login/employee')
 def postLoginManager():
     pass
 
 
-# GET /profile
 @app.get('/profile')
 def getProfile():
     pass
 
-# PATCH /profile
+
 @app.patch('/profile')
 def patchProfile():
     pass
 
-# GET /profile/manager
+
 @app.get('/profile/manager')
 def getProfileManager():
     pass
 
-# PATCH /profile/manager
+
 @app.patch('/profile/manager')
 def patchProfileManager():
     pass
 
-# GET /profile/employee
+
 @app.get('/profile/employee')
 def getProfileEmployee():
     pass
 
-# PATCH /profile/employee
+
 @app.patch('/profile/employee')
 def patchProfileEmployee():
     pass
 
-# GET /employees
+
 @app.get('/employees')
 def getEmployees():
     pass
 
-# GET /employees/{id}
+
 @app.get('/employees/{id}')
 def getEmployeesId():
     pass
 
-# UPDATE /employees/{id}
-@app.update('/employees/{id}')
+
+@app.patch('/employees/{id}')
 def updateEmployeesId():
     pass
 
-# DELETE /employees/{id}
+
 @app.delete('/employees/{id}')
 def deleteEmployeesId():
     pass
 
-# POST /activities
+
 @app.post('/activities')
 def postActivities():
     pass
 
-# GET /activities
+
 @app.get('/activities')
 def getActivities():
     pass
 
-# GET /activities/{id}
+
 @app.get('/activities/{id}')
 def getActivitiesId():
     pass
 
-# PATCH /activities/{id}
+
 @app.patch('/activities/{id}')
 def patchActivitiesId():
     pass
 
-# DELETE /activities/{id}
+
 @app.delete('/activities/{id}')
 def deleteActivitiesId():
     pass
 
-# GET /companies/{id}
+
 @app.get('/companies/{id}')
 def getCompaniesId():
     pass
 
-# PATCH /companies/{id}
+
 @app.patch('/companies/{id}')
 def patchCompaniesId():
     pass
 
-# =======================
 
 # HTTP status code
 # 2xx, 3xx, 4xx, 5xx
