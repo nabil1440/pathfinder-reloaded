@@ -42,7 +42,7 @@ class Company(Base):
     address = Column(String)
 
     manager = relationship('Manager', back_populates='company')
-    employee = relationship('Employee', employees='company')
+    employee = relationship('Employee', back_populates='company')
 
 
 class Manager(Base):
@@ -56,7 +56,7 @@ class Manager(Base):
     company_id = Column(Integer, ForeignKey('companies.id'))
 
     company = relationship('Company', back_populates='managers')
-    employee = relationship('Employee', employees='manager')
+    employee = relationship('Employee', back_populates='manager')
 
 
 class Employee(Base):
