@@ -93,6 +93,7 @@ class Manager(ManagerBase):
 
 class Employee(EmployeeBase):
     id: int
+    daily_activities: list[DailyActivity] = []
 
     manager: Manager
     company: Company
