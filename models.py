@@ -12,13 +12,12 @@ class User(Base):
     profession = Column(String)
     password = Column(String)
 
-    acticity = relationship('Item', back_populates='user')
-
 
 class DailyActivity(Base):
     __tablename__ = "daily_activities"
 
-    date = Column(String, primary_key=True, unique=True)
+    id = Column(Integer, primary_key=True, index=True, unique=True)
+    date = Column(String)
     workTime = Column(Integer)
     lostTime = Column(Integer)
     socialMediaUsage = Column(Integer)
@@ -27,11 +26,8 @@ class DailyActivity(Base):
     score = Column(Float)
     completedObjectives = Column(Integer)
     description = Column(String)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    employee_id = Column(Integer, ForeignKey('employees.id'))
-
-    user = relationship("User", back_populates='daily_activities')
-    employee = relationship('Employee', back_populates='daily_activities')
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=True)
+    employee_id = Column(Integer, ForeignKey('employees.id'), nullable=True)
 
 
 class Company(Base):
@@ -40,9 +36,6 @@ class Company(Base):
     id = Column(Integer, primary_key=True, index=True, unique=True)
     name = Column(String)
     address = Column(String)
-
-    manager = relationship('Manager', back_populates='company')
-    employee = relationship('Employee', back_populates='company')
 
 
 class Manager(Base):
@@ -54,9 +47,6 @@ class Manager(Base):
     isSuper = Column(Boolean)
     password = Column(String)
     company_id = Column(Integer, ForeignKey('companies.id'))
-
-    company = relationship('Company', back_populates='managers')
-    employee = relationship('Employee', back_populates='manager')
 
 
 class Employee(Base):
@@ -72,7 +62,3 @@ class Employee(Base):
 
     company_id = Column(Integer, ForeignKey('companies.id'))
     manager_id = Column(Integer, ForeignKey('managers.id'))
-
-    manager = relationship('Manager', back_populates='employees')
-    company = relationship('Company', back_populates='employees')
-    daily_activity = relationship('DailyActivity', back_populates='employee')

@@ -1,11 +1,6 @@
 from pydantic import BaseModel
 
 
-class UserBase(BaseModel):
-    name: str
-    profession: str
-
-
 class DailyActivityBase(BaseModel):
     date: str
     workTime: int
@@ -14,9 +9,37 @@ class DailyActivityBase(BaseModel):
     entertainmentTime: int
     targetObjectives: int
     completedObjectives: int
-    score: float
     description: str
+
+
+class DailyActivityCreate(DailyActivityBase):
+    pass
+
+
+class DailyActivity(DailyActivityBase):
+    id: int
+    employee_id: int
     user_id: int
+    score: float
+
+    class Config:
+        orm_mode = True
+
+
+class UserBase(BaseModel):
+    name: str
+    profession: str
+
+
+class UserCreate(UserBase):
+    password: str
+
+
+class User(UserBase):
+    id: int
+
+    class Config:
+        orm_mode = True
 
 
 class CompanyBase(BaseModel):
@@ -24,56 +47,12 @@ class CompanyBase(BaseModel):
     address: str
 
 
-class ManagerBase(BaseModel):
+class CompanyCreate(BaseModel):
     name: str
     address: str
-    isSuper: bool
-    company_id: int
-
-
-class EmployeeBase(BaseModel):
-    name: str
-    address: str
-    role: str
-    department: str
-    salary: int
-
-# Creation Schemas
-
-
-class UserCreate(UserBase):
+    manager_name: str
+    manager_address: str
     password: str
-
-
-class DailyActivityCreate(DailyActivityBase):
-    pass
-
-
-class CompanyCreate(CompanyBase):
-    pass
-
-
-class ManagerCreate(ManagerBase):
-    password: str
-
-
-class EmployeeCreate(EmployeeBase):
-    password: str
-
-
-class DailyActivity(DailyActivityBase):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-class User(UserBase):
-    id: int
-    daily_activities: list[DailyActivity] = []
-
-    class Config:
-        orm_mode = True
 
 
 class Company(CompanyBase):
@@ -83,20 +62,65 @@ class Company(CompanyBase):
         orm_mode = True
 
 
+class ManagerBase(BaseModel):
+    name: str
+    address: str
+
+
+class ManagerCreate(ManagerBase):
+    password: str
+    company_id: int
+
+
 class Manager(ManagerBase):
     id: int
-    company: Company
+    isSuper: bool
+    company_id: int
 
     class Config:
         orm_mode = True
+
+
+class EmployeeBase(BaseModel):
+    name: str
+    address: str
+    role: str
+    department: str
+    salary: int
+
+
+class EmployeeCreate(EmployeeBase):
+    password: str
 
 
 class Employee(EmployeeBase):
     id: int
-    daily_activities: list[DailyActivity] = []
-
-    manager: Manager
-    company: Company
 
     class Config:
         orm_mode = True
+
+
+class LoginCred(BaseModel):
+    name: str
+    password: str
+
+
+class UpdateEmployee(BaseModel):
+    address: str
+    role: str
+    department: str
+    salary: int
+
+
+class UpdateManager(BaseModel):
+    address: str
+    isSuper: bool
+
+
+class UpdateCompany(BaseModel):
+    name: str
+    address: str
+
+
+class UpdateUser(BaseModel):
+    profession: str

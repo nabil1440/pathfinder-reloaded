@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 import models
 import schemas
 
+# These are used as examples
+
 
 def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
@@ -36,50 +38,3 @@ def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
     db.commit()
     db.refresh(db_item)
     return db_item
-
-# CRUD functions
-# USER-G1U, DAILYACT-GG1UD, COMPANY-G1U, MANAGER-G1U, Employee-GG1U
-
-
-def getUserProfile(db: Session):
-    pass
-
-
-def updateProfile(db: Session):
-    pass
-
-
-def getDays(db: Session):
-    pass
-
-
-def getOneDay(db: Session):
-    pass
-
-
-def getCompany(db: Session):
-    pass
-
-
-def updateCompany(db: Session):
-    pass
-
-
-def getManager(db: Session):
-    pass
-
-
-def updateManager(db: Session):
-    pass
-
-
-def getEmployees(db: Session):
-    pass
-
-
-def getOneEmployee(db: Session):
-    pass
-
-
-def updateEmployee(db: Session):
-    pass
